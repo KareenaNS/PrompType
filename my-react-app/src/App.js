@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -10,6 +9,7 @@ import NavBar from "./components/NavBar";
 import Login from './components/Login';
 import History from './components/History';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Results from './components/Results';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -39,6 +39,10 @@ function App() {
         <Route
           path="/history"
           element={user ? <History /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/results"
+          element={user ? <Results /> : <Navigate to="/login" replace />}
         />
       </Routes>
     </Router>

@@ -13,8 +13,8 @@ function Home( { user }) {
         <h2>Welcome, {user}!</h2>
       </header>
       <div class="body-section">
-        <img src="/promptype_logo.png" className="logo" alt="logo" />
-        <img src="/promptype_slogan.png" className="logo2" alt="slogan" />
+        <img src={`${process.env.PUBLIC_URL}/promptype_logo.png`} className="logo" alt="logo" />
+        <img src={`${process.env.PUBLIC_URL}/promptype_slogan.png`} className="logo2" alt="slogan" />
         <SearchBar/>
         {/* include the categories underneath now */}
       </div>

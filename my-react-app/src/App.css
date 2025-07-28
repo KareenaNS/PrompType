@@ -1,3 +1,4 @@
+/*HOME PAGE general homepage shtuff*/
 .App {
   text-align: center;
 }
@@ -25,20 +26,8 @@
   display: flex;
   animation: logo 0.7s ease-out forwards;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .body-section {
-  background-color: #626e85;
+  background: linear-gradient(to bottom, #626e85, #b8c1d1);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -48,7 +37,7 @@
   color: white;
 }
 
-
+/*SEARCH implementing the search feature styling*/
 .search-bar-container {
   display:flex; 
   align-items: center;
@@ -77,6 +66,7 @@
   width: 60%
 }
 
+/*LOGIN making the login cutesy*/
 .login-container {
   display: flex;
   justify-content: center;
@@ -93,7 +83,7 @@
   border-radius: 8px;
 }
 
-/* styling teh navbar */
+/*NAVBAR styling teh navbar */
 .navbar-right a {
   margin-left: 20px;
   text-decoration: none;
@@ -124,4 +114,156 @@
 }
 .home_button {
 width: 30%;
+}
+
+/*RESULTS styling the results page */
+.results-container {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh; /* Full viewport height */
+  background: linear-gradient(to bottom, #626e85, #b8c1d1);
+}
+.results-container h2 {
+  color: #1853b3;
+  text-align: center;
+}
+.results-page {
+  padding: 2rem;
+  font-family: sans-serif;
+}
+.typing-header {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.typed-query {
+  font-style: italic;
+  color: white;
+  padding-top: 3%;
+}
+/*RESULTS COMPONENTS code for styling components on the results page*/
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}.component-card {
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.component-card:hover {
+  transform: scale(1.02);
+}
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+}
+.modal-content pre {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+.modal-content button {
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+/*RESULTS PAGE CODE SNIPPET -- results page code snippet styling */
+.code-snippet-block {
+  margin-top: 3rem;
+  background-color: #1e1e2f;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: monospace;
+}
+.code-box {
+  background-color: #2e2e3e;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.code-snippet-block button {
+  background-color: #c5eff7;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+.code-snippet-block button:hover {
+  background-color: #a0deeb;
+}
+
+/*HISTORY PAGE*/
+.history-container {
+  padding: 2rem;
+  font-family: sans-serif;
+  background: linear-gradient(to bottom, #626e85, #b8c1d1);
+}
+.history-card {
+  background: #f4f4f4;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.history-container h2 {
+  color: white;
+  text-align: center;
+  text-decoration:dashed;
+}
+.code-box code {
+  color: white;
+}
+.history-components {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.history-component {
+  flex: 1 1 30%;
+  padding: 1rem;
+  border-radius: 8px;
+  color: #000;
+}
+.history-card button {
+  margin-top: 0.5rem;
+  padding: 0.6rem 1rem;
+  background-color: #c5eff7;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.history-card button:hover {
+  background-color: #a0deeb;
 }

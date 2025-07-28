@@ -1,9 +1,10 @@
 import { useState } from "react";
-import React from "react";
 import "../App.css";
+import {useNavigate} from "react-router-dom";
 
 function SearchBar() {
   const [query, setQuery] = useState('');
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
@@ -11,7 +12,9 @@ function SearchBar() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Search query:', query);
+    if (query.trim() !== '') {
+      navigate(`/results?q=${encodeURIComponent(query)}`);
+    }
   };
   return (
     <form className="search-bar-container" onSubmit={handleSubmit}>
@@ -19,11 +22,11 @@ function SearchBar() {
         type="text"
         value={query}
         onChange={handleInputChange}
-        placeholder="Search..."
+        placeholder="e.g., Responsive login form with remember me"
         className="search-bar"
       />
       <button type="submit" className="search-button">
-        <img src="/go.gif" className="search-arrow" alt="slogan" />
+        <img src={`${process.env.PUBLIC_URL}/go.gif`} className="search-arrow" alt="slogan" />
       </button>
     </form>
   );
