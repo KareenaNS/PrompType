@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Login from './components/Login';
 import History from './components/History';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState(null);
