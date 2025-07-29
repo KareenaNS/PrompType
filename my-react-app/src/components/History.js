@@ -1,5 +1,4 @@
 //this will be the history page for each unique user
-// src/pages/History.js
 import "../App.css";
 import { useEffect, useState } from "react";
 

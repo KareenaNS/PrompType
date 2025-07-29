@@ -6,13 +6,32 @@ import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { getComponentSuggestions } from "./ComponentMap";
 import {useEffect} from 'react';
+import { Button, Input, Label, InputContainer, Checkbox } from "@visa/nova-react";
 
 function Results () {
     const query = new URLSearchParams(useLocation().search).get('q');
     const {components, codeSnippet} = getComponentSuggestions(query);
+    console.log("Query:", query);
+console.log("Components returned:", components);
+console.log("Code snippet:", codeSnippet);
     const [showModal, setShowModal] = useState(false);
     const [copied, setCopied] = useState(false);
     const [activeComponent, setActiveComponent] = useState(null);
+    const componentMapVisuals = {
+      Button: <Button variant="primary">Click Me</Button>,
+      Input: (
+        <InputContainer>
+          <Label htmlFor="example-input">Example Input</Label>
+          <Input id="example-input" placeholder="Enter text" />
+        </InputContainer>
+      ),
+      Checkbox: <Checkbox label="Remember me" />,
+      Card: <div style={{border: '1px solid #ccc', padding: '1rem'}}>Card preview</div>,
+      Text: <p>This is text</p>,
+      BarChart: <div>[BarChart preview]</div>,
+      LineChart: <div>[LineChart preview]</div>,
+      PieChart: <div>[PieChart preview]</div>,
+    };
     const handleCopy = () => {
       navigator.clipboard.writeText(activeComponent.code);
       setCopied(true);
@@ -34,26 +53,29 @@ function Results () {
       const updatedHistory = [historyItem, ...existingHistory.filter(item => item.query !== query)];
       localStorage.setItem("ui-history", JSON.stringify(updatedHistory.slice(0, 10)));
     }, [query]);
-    const componentSuggestions = [
-      {
-        name: "TextInput",
-        description: "Captures user text input",
-        color: "#fde3a7", // 5.71 contrast
-        code: `<input type="text" placeholder="Enter text" />`,
-      },
-      {
-        name: "Button",
-        description: "Triggers form actions",
-        color: "#c5eff7", //accessible blue -- 5.83
-        code: `<button>Click me</button>`,
-      },
-      {
-        name: "Checkbox",
-        description: "Lets users opt in/out",
-        color: "#c8f7c5", // ratio: 6
-        code: `<label><input type="checkbox" /> Remember me</label>`,
-      },
-    ];
+    //hard-coded testing example
+    // const componentSuggestions = [
+    //   {
+    //     name: "Input",
+    //     description: "Captures user text input",
+    //     color: "#fde3a7", // 5.71 contrast
+    //     code: `<input type="text" placeholder="Enter text" />`,
+    //   },
+    //   {
+    //     name: "Button",
+    //     description: "Triggers form actions",
+    //     color: "#c5eff7", //accessible blue -- 5.83
+    //     code: `<button>Click me</button>`,
+    //   },
+    //   {
+    //     name: "Checkbox",
+    //     description: "Lets users opt in/out",
+    //     color: "#c8f7c5", // ratio: 6
+    //     code: `<label><input type="checkbox" /> Remember me</label>`,
+    //   },
+    // ];
+ const componentSuggestions = components;
+
     return (
     <div className="results-container">
         <div className="typing-header">
@@ -76,8 +98,8 @@ function Results () {
             style={{ backgroundColor: comp.color }}
             onClick={() => handleCardClick(comp)}
           >
-            <h3>{comp.name}</h3>
-            <p>{comp.description}</p>
+          <h3>{comp.name}</h3>
+          <p>{comp.description}</p>
           </div>
         ))}
       </div>

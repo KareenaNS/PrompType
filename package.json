@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "gh-pages": "^6.3.0"
+  },
+  "dependencies": {
+    "@visa/charts-react": "^5.0.1",
+    "@visa/nova-react": "^2.5.4"
   }
 }

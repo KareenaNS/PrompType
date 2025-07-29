@@ -10,6 +10,7 @@ import Login from './components/Login';
 import History from './components/History';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Results from './components/Results';
+import Categories from "./components/Categories";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -43,6 +44,10 @@ function App() {
         <Route
           path="/results"
           element={user ? <Results /> : <Navigate to="/login" replace />}
+        />
+          <Route
+          path="/categories"
+          element={user ? <Categories /> : <Navigate to="/login" replace />}
         />
       </Routes>
     </Router>
